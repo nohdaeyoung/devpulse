@@ -67,6 +67,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/geulsegye",
     claudeProjectDirs: [],
     techStack: ["Next.js"],
+    url: "https://soop.324.ing",
     public: true,
   },
   {
@@ -75,6 +76,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/lab",
     claudeProjectDirs: [],
     techStack: ["Motion Graphics", "Canvas"],
+    url: "https://lab.324.ing",
     public: true,
   },
   {
@@ -83,6 +85,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/daeyoung-agent",
     claudeProjectDirs: [],
     techStack: ["AI Agent"],
+    url: "https://agent.324.ing",
     public: true,
   },
   {
