@@ -119,7 +119,7 @@ export default async function ProjectDetailPage({
                 )}
               </div>
               <span className="sm:hidden text-xs text-text-muted flex-shrink-0 ml-2 tabular-nums">
-                {entry.stats.commitCount}c
+                {entry.stats.commitCount} commits
               </span>
             </a>
           ))}

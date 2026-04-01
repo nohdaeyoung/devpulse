@@ -191,12 +191,12 @@ function ProjectRow({
       </div>
 
       <div className="flex items-center gap-4 flex-shrink-0 text-xs text-text-secondary tabular-nums">
-        <span className="hidden sm:inline w-16 text-right">
-          {project.totalCommits} c
+        <span className="hidden sm:inline w-20 text-right">
+          {project.totalCommits} commits
         </span>
         {project.totalSessions > 0 && (
-          <span className="hidden sm:inline w-12 text-right">
-            {project.totalSessions} ai
+          <span className="hidden sm:inline w-14 text-right">
+            {project.totalSessions} AI
           </span>
         )}
         <span className="w-10 text-right text-text-muted">
