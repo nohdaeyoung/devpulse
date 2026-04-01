@@ -171,6 +171,22 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js"],
     public: true,
   },
+  {
+    slug: "documents",
+    name: "Documents",
+    path: "/Volumes/Dev/documents",
+    claudeProjectDirs: [],
+    techStack: ["Docs"],
+    public: true,
+  },
+  {
+    slug: "my-game",
+    name: "My Game",
+    path: "/Users/dyno/my-game",
+    claudeProjectDirs: ["-Users-dyno-my-game"],
+    techStack: ["Game"],
+    public: true,
+  },
 ];
 
 // Claude projects base directory
