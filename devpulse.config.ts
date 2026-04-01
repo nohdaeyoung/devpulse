@@ -33,6 +33,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/f1",
     claudeProjectDirs: ["-Volumes-Dev-f1"],
     techStack: ["Next.js", "FastF1", "Python"],
+    url: "https://f1-portal-rohdys-projects.vercel.app",
     public: true,
   },
   {
@@ -41,6 +42,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/photobook-library",
     claudeProjectDirs: ["-Volumes-Dev-photobook-library", "-Users-dyno-photobook-library"],
     techStack: ["Next.js"],
+    url: "https://l.324.ing",
     public: true,
   },
   {
@@ -129,6 +131,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/photoframemaker",
     claudeProjectDirs: ["-Users-dyno-photoframemaker-www"],
     techStack: ["Next.js"],
+    url: "https://f.324.ing",
     public: true,
   },
   {
@@ -137,6 +140,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/kbo",
     claudeProjectDirs: [],
     techStack: ["Next.js"],
+    url: "https://kbo-ashy.vercel.app",
     public: true,
   },
   {
@@ -145,6 +149,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/aitoday",
     claudeProjectDirs: [],
     techStack: ["Next.js"],
+    url: "https://aitoday-phi.vercel.app",
     public: true,
   },
   {
@@ -177,6 +182,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/documents",
     claudeProjectDirs: [],
     techStack: ["Docs"],
+    url: "https://d.324.ing",
     public: true,
   },
   {
