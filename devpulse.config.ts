@@ -51,7 +51,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/f1",
     claudeProjectDirs: ["-Volumes-Dev-f1"],
     techStack: ["Next.js", "FastF1", "Python"],
-    url: "https://f1-portal-rohdys-projects.vercel.app",
+    url: "https://f1.324.ing",
     public: true,
     architecture: [
       { label: "Frontend", items: ["Next.js App Router"] },
@@ -260,6 +260,7 @@ export const projects: ProjectConfig[] = [
     path: "/Volumes/Dev/geulcheck",
     claudeProjectDirs: [],
     techStack: ["Next.js"],
+    url: "https://books.324.ing",
     public: true,
     architecture: [
       { label: "Frontend", items: ["Next.js App Router"] },
@@ -292,11 +293,28 @@ export const projects: ProjectConfig[] = [
     ],
   },
   {
+    slug: "devpulse",
+    name: "DevPulse",
+    path: "/Volumes/Dev/devpulse",
+    claudeProjectDirs: [],
+    techStack: ["Next.js 16", "Firebase", "Tailwind v4"],
+    url: "https://devpulse-ebon.vercel.app",
+    public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js 16", "Tailwind v4", "Pretendard"] },
+      { label: "Data", items: ["Cloud Firestore"] },
+      { label: "Pipeline", items: ["Git Extract", "Claude Summarize", "Firebase Upload"] },
+      { label: "Scheduler", items: ["macOS LaunchAgent", "Daily 05:00"] },
+      { label: "Deploy", items: ["Vercel"] },
+    ],
+  },
+  {
     slug: "my-game",
     name: "My Game",
     path: "/Users/dyno/my-game",
     claudeProjectDirs: ["-Users-dyno-my-game"],
     techStack: ["Game"],
+    url: "https://mine.324.ing",
     public: true,
     architecture: [
       { label: "Engine", items: ["Game Logic"] },

@@ -61,11 +61,16 @@ export async function updateProjectMeta(data: DailyData): Promise<void> {
     // Keep only last 30 days
     while (recentActivity.length > 30) recentActivity.shift();
 
+    const config = (await import("../devpulse.config")).projects.find(
+      (p) => p.slug === data.slug
+    );
     await projectRef.update({
       lastActivity: admin.firestore.Timestamp.fromDate(new Date(data.date)),
       totalCommits: admin.firestore.FieldValue.increment(data.stats.commitCount),
       totalSessions: admin.firestore.FieldValue.increment(data.claudeSession.sessionCount),
       recentActivity,
+      ...(config?.url && { url: config.url }),
+      ...(config?.techStack && { techStack: config.techStack }),
     });
   }
 }
