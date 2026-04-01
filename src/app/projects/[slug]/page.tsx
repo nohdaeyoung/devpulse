@@ -107,7 +107,7 @@ export default async function ProjectDetailPage({
                   </p>
                 )}
               </div>
-              <div className="flex items-center gap-3 text-xs text-text-muted flex-shrink-0 ml-4 tabular-nums">
+              <div className="hidden sm:flex items-center gap-3 text-xs text-text-muted flex-shrink-0 ml-4 tabular-nums">
                 <span>{entry.stats.commitCount} commits</span>
                 <span>
                   <span className="text-diff-add">+{entry.stats.linesAdded}</span>
@@ -118,6 +118,9 @@ export default async function ProjectDetailPage({
                   <span>{entry.claudeSession.sessionCount} AI</span>
                 )}
               </div>
+              <span className="sm:hidden text-xs text-text-muted flex-shrink-0 ml-2 tabular-nums">
+                {entry.stats.commitCount}c
+              </span>
             </a>
           ))}
         </div>

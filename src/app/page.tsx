@@ -60,6 +60,7 @@ export default async function OverviewPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-6">
+      <h1 className="sr-only">DevPulse 프로젝트 현황</h1>
       {/* Pulse Summary Bar */}
       {todayStats && (todayStats.commits > 0 || todayStats.sessions > 0) ? (
         <div className="flex items-center gap-3 text-sm mb-6 px-3 py-2 rounded-md bg-accent-dim">

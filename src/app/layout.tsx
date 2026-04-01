@@ -50,7 +50,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-bg-primary text-text-primary">
         <header className="border-b border-border px-6 py-3">
           <div className="max-w-5xl mx-auto flex items-center justify-between">
-            <a href="/" className="text-base font-semibold tracking-tight">
+            <a href="/" className="text-base font-semibold tracking-tight py-2 -my-2">
               DevPulse
             </a>
             <TodayDate />
