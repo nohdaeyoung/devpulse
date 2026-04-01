@@ -102,6 +102,36 @@ export async function getProjectDailyEntries(
   return entries;
 }
 
+export async function getTodayStats(): Promise<{
+  commits: number;
+  projects: number;
+  sessions: number;
+} | null> {
+  if (!isFirebaseConfigured()) return null;
+  const db = await getFirestore();
+  const { collection, getDocs } = await import("firebase/firestore");
+  const today = new Date().toISOString().split("T")[0];
+  const snap = await getDocs(collection(db, "projects"));
+  let commits = 0;
+  let projects = 0;
+  let sessions = 0;
+
+  const { doc, getDoc } = await import("firebase/firestore");
+  for (const projDoc of snap.docs) {
+    const dailySnap = await getDoc(
+      doc(db, "projects", projDoc.id, "daily", today)
+    );
+    if (dailySnap.exists()) {
+      const data = dailySnap.data();
+      commits += data.stats?.commitCount || 0;
+      sessions += data.claudeSession?.sessionCount || 0;
+      projects++;
+    }
+  }
+
+  return { commits, projects, sessions };
+}
+
 export async function getDailyEntry(
   slug: string,
   date: string

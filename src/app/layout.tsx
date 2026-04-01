@@ -18,6 +18,19 @@ export const metadata: Metadata = {
     "Claude Code로 만든 프로젝트들의 실시간 현황과 AI 자동 생성 개발 블로그",
 };
 
+function TodayDate() {
+  const now = new Date();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  const dayNames = ["일", "월", "화", "수", "목", "금", "토"];
+  const day = dayNames[now.getDay()];
+  return (
+    <span className="text-sm text-text-muted tabular-nums">
+      {month}월 {date}일 {day}요일
+    </span>
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,19 +41,23 @@ export default function RootLayout({
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <header className="border-b border-neutral-200 px-6 py-4">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-bg-primary text-text-primary">
+        <header className="border-b border-border px-6 py-3">
           <div className="max-w-5xl mx-auto flex items-center justify-between">
-            <a href="/" className="text-lg font-semibold tracking-tight">
+            <a href="/" className="text-base font-semibold tracking-tight">
               DevPulse
             </a>
-            <span className="text-sm text-neutral-500">
-              AI-powered dev blog
-            </span>
+            <TodayDate />
           </div>
         </header>
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-neutral-200 px-6 py-4 text-center text-sm text-neutral-400">
+        <footer className="border-t border-border px-6 py-3 text-center text-xs text-text-muted">
           Built with Claude Code
         </footer>
       </body>

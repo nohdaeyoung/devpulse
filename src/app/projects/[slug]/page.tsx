@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getProject, getProjectDailyEntries } from "@/lib/data";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export const revalidate = 3600;
 
@@ -22,22 +23,17 @@ export default async function ProjectDetailPage({
   if (!project) notFound();
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-8">
-      <a
-        href="/"
-        className="text-sm text-neutral-400 hover:text-neutral-600 mb-4 inline-block"
-      >
-        &larr; 전체 프로젝트
-      </a>
+    <div className="max-w-5xl mx-auto px-6 py-6">
+      <Breadcrumb projectMap={{ [slug]: project.name }} />
 
-      <div className="flex items-start justify-between mb-8">
+      <div className="flex items-start justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold mb-1">{project.name}</h1>
-          <div className="flex gap-1.5 mb-3 flex-wrap">
+          <h1 className="text-xl font-semibold mb-1">{project.name}</h1>
+          <div className="flex gap-1.5 mb-2 flex-wrap">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="text-xs px-2 py-0.5 bg-neutral-100 text-neutral-600 rounded"
+                className="text-[10px] px-1.5 py-0.5 bg-bg-secondary text-text-muted rounded"
               >
                 {tech}
               </span>
@@ -48,23 +44,23 @@ export default async function ProjectDetailPage({
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-blue-600 hover:underline"
+              className="text-sm text-accent hover:underline"
             >
               {project.url.replace("https://", "")}
             </a>
           )}
         </div>
 
-        <div className="text-right text-sm text-neutral-500">
+        <div className="text-right text-sm text-text-secondary tabular-nums">
           <div>
-            <span className="font-semibold text-neutral-800">
+            <span className="font-semibold text-text-primary">
               {project.totalCommits}
             </span>{" "}
             commits
           </div>
           {project.totalSessions > 0 && (
             <div>
-              <span className="font-semibold text-neutral-800">
+              <span className="font-semibold text-text-primary">
                 {project.totalSessions}
               </span>{" "}
               AI sessions
@@ -73,44 +69,55 @@ export default async function ProjectDetailPage({
         </div>
       </div>
 
-      <h2 className="text-lg font-semibold mb-4">개발 타임라인</h2>
+      <h2 className="text-xs font-medium text-text-muted uppercase tracking-wider mb-3">
+        개발 타임라인
+      </h2>
 
       {entries.length === 0 ? (
-        <div className="text-center py-12 text-neutral-400">
-          아직 기록이 없습니다
+        <div className="py-12">
+          <p className="text-text-secondary mb-2">
+            아직 {project.name}의 기록이 없습니다.
+          </p>
+          <p className="text-sm text-text-muted">
+            파이프라인을 실행하면 자동으로 수집됩니다.
+          </p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="divide-y divide-border">
           {entries.map((entry) => (
             <a
               key={entry.date}
               href={`/projects/${slug}/${entry.date}`}
-              className="block border border-neutral-200 rounded-lg p-4 hover:border-neutral-400 transition-colors"
+              className="flex items-start justify-between px-3 py-3 hover:bg-bg-hover transition-colors rounded-md"
             >
-              <div className="flex items-start justify-between mb-2">
-                <h3 className="font-medium">{formatFullDate(entry.date)}</h3>
-                <div className="flex items-center gap-3 text-xs text-neutral-500">
-                  <span>{entry.stats.commitCount} commits</span>
-                  <span>
-                    +{entry.stats.linesAdded} -{entry.stats.linesRemoved}
-                  </span>
-                  {entry.claudeSession.sessionCount > 0 && (
-                    <span>{entry.claudeSession.sessionCount} AI</span>
-                  )}
-                </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-medium mb-1">
+                  {formatFullDate(entry.date)}
+                </h3>
+                {entry.summary ? (
+                  <p className="text-sm text-text-secondary line-clamp-2">
+                    {entry.summary}
+                  </p>
+                ) : (
+                  <p className="text-sm text-text-muted">
+                    {entry.commits
+                      .slice(0, 3)
+                      .map((c) => c.message)
+                      .join(" / ")}
+                  </p>
+                )}
               </div>
-              {entry.summary ? (
-                <p className="text-sm text-neutral-600 line-clamp-2">
-                  {entry.summary}
-                </p>
-              ) : (
-                <p className="text-sm text-neutral-400 italic">
-                  {entry.commits
-                    .slice(0, 3)
-                    .map((c) => c.message)
-                    .join(" / ")}
-                </p>
-              )}
+              <div className="flex items-center gap-3 text-xs text-text-muted flex-shrink-0 ml-4 tabular-nums">
+                <span>{entry.stats.commitCount} commits</span>
+                <span>
+                  <span className="text-diff-add">+{entry.stats.linesAdded}</span>
+                  {" "}
+                  <span className="text-diff-remove">-{entry.stats.linesRemoved}</span>
+                </span>
+                {entry.claudeSession.sessionCount > 0 && (
+                  <span>{entry.claudeSession.sessionCount} AI</span>
+                )}
+              </div>
             </a>
           ))}
         </div>
