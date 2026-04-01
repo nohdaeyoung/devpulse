@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { getProject, getProjectDailyEntries } from "@/lib/data";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { ArchDiagram } from "@/components/ArchDiagram";
+import { projects } from "../../../../devpulse.config";
 
 export const revalidate = 3600;
 
@@ -68,6 +70,19 @@ export default async function ProjectDetailPage({
           )}
         </div>
       </div>
+
+      {(() => {
+        const config = projects.find((p) => p.slug === slug);
+        if (!config?.architecture) return null;
+        return (
+          <section className="mb-8">
+            <h2 className="text-xs font-medium text-text-muted uppercase tracking-wider mb-3">
+              아키텍처
+            </h2>
+            <ArchDiagram layers={config.architecture} />
+          </section>
+        );
+      })()}
 
       <h2 className="text-xs font-medium text-text-muted uppercase tracking-wider mb-3">
         개발 타임라인

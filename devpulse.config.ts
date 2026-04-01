@@ -1,3 +1,8 @@
+export interface ArchLayer {
+  label: string;
+  items: string[];
+}
+
 export interface ProjectConfig {
   slug: string;
   name: string;
@@ -6,6 +11,7 @@ export interface ProjectConfig {
   techStack: string[];
   url?: string;
   public: boolean;
+  architecture?: ArchLayer[];
 }
 
 export const projects: ProjectConfig[] = [
@@ -17,6 +23,12 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js", "Sanity CMS"],
     url: "https://324.ing",
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router", "Tailwind CSS"] },
+      { label: "CMS", items: ["Sanity Studio", "GROQ Queries"] },
+      { label: "Media", items: ["Sanity CDN", "EXIF Extraction"] },
+      { label: "Deploy", items: ["Vercel", "324.ing"] },
+    ],
   },
   {
     slug: "oneulgam",
@@ -26,6 +38,12 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js 16", "Firebase", "Tailwind v4", "PWA"],
     url: "https://g.324.ing",
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js 16", "Tailwind v4", "Zustand"] },
+      { label: "Auth", items: ["Firebase Auth", "Google", "Naver", "Email"] },
+      { label: "Data", items: ["Cloud Firestore"] },
+      { label: "Deploy", items: ["Vercel", "PWA", "g.324.ing"] },
+    ],
   },
   {
     slug: "f1",
@@ -35,6 +53,12 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js", "FastF1", "Python"],
     url: "https://f1-portal-rohdys-projects.vercel.app",
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "API", items: ["Next.js API Routes", "Python FastF1"] },
+      { label: "Data", items: ["F1 Timing Data", "Ergast API"] },
+      { label: "Deploy", items: ["Vercel"] },
+    ],
   },
   {
     slug: "photobook-library",
@@ -44,6 +68,10 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js"],
     url: "https://l.324.ing",
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "Deploy", items: ["Vercel", "l.324.ing"] },
+    ],
   },
   {
     slug: "seomachine",
@@ -52,6 +80,11 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: ["-Volumes-Dev-seomachine", "-Users-dyno-seomachine"],
     techStack: ["Next.js"],
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "API", items: ["SEO Analysis Engine"] },
+      { label: "Deploy", items: ["Vercel"] },
+    ],
   },
   {
     slug: "daeyoung-openclaw",
@@ -60,6 +93,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: ["-Volumes-Dev-daeyoung-openclaw-main", "-Users-dyno-daeyoung-openclaw-main"],
     techStack: ["OpenClaw"],
     public: true,
+    architecture: [
+      { label: "Platform", items: ["OpenClaw Runtime"] },
+      { label: "Services", items: ["Multi-Project Orchestration"] },
+    ],
   },
   {
     slug: "geulsegye",
@@ -69,6 +106,10 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js"],
     url: "https://soop.324.ing",
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "Deploy", items: ["Vercel", "soop.324.ing"] },
+    ],
   },
   {
     slug: "lab",
@@ -78,6 +119,11 @@ export const projects: ProjectConfig[] = [
     techStack: ["Motion Graphics", "Canvas"],
     url: "https://lab.324.ing",
     public: true,
+    architecture: [
+      { label: "Rendering", items: ["Canvas API", "WebGL"] },
+      { label: "Animation", items: ["Motion Graphics", "requestAnimationFrame"] },
+      { label: "Deploy", items: ["Vercel", "lab.324.ing"] },
+    ],
   },
   {
     slug: "daeyoung-agent",
@@ -87,6 +133,11 @@ export const projects: ProjectConfig[] = [
     techStack: ["AI Agent"],
     url: "https://agent.324.ing",
     public: true,
+    architecture: [
+      { label: "Agent", items: ["Claude API", "Agent SDK"] },
+      { label: "Interface", items: ["Chat UI"] },
+      { label: "Deploy", items: ["Vercel", "agent.324.ing"] },
+    ],
   },
   {
     slug: "concert-archive",
@@ -95,6 +146,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: ["-Volumes-Dev-concert-archive"],
     techStack: ["Next.js"],
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "Data", items: ["Concert Records"] },
+    ],
   },
   {
     slug: "cultural-archive",
@@ -103,6 +158,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: [],
     techStack: ["Next.js"],
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "Data", items: ["Cultural Records"] },
+    ],
   },
   {
     slug: "booklibrary",
@@ -111,6 +170,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: [],
     techStack: ["Next.js"],
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "Data", items: ["Book Catalog"] },
+    ],
   },
   {
     slug: "claw-empire",
@@ -119,6 +182,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: [],
     techStack: ["Game"],
     public: true,
+    architecture: [
+      { label: "Engine", items: ["Game Logic"] },
+      { label: "Rendering", items: ["Canvas / WebGL"] },
+    ],
   },
   {
     slug: "exhibition3d",
@@ -127,6 +194,11 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: [],
     techStack: ["Three.js"],
     public: true,
+    architecture: [
+      { label: "3D Engine", items: ["Three.js", "WebGL"] },
+      { label: "Scene", items: ["3D Models", "Lighting", "Camera"] },
+      { label: "Deploy", items: ["Vercel"] },
+    ],
   },
   {
     slug: "photoframemaker",
@@ -136,6 +208,11 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js"],
     url: "https://f.324.ing",
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "Processing", items: ["Canvas Image Manipulation"] },
+      { label: "Deploy", items: ["Vercel", "f.324.ing"] },
+    ],
   },
   {
     slug: "kbo",
@@ -145,6 +222,11 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js"],
     url: "https://kbo-ashy.vercel.app",
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "Data", items: ["KBO Stats API"] },
+      { label: "Deploy", items: ["Vercel"] },
+    ],
   },
   {
     slug: "aitoday",
@@ -154,6 +236,11 @@ export const projects: ProjectConfig[] = [
     techStack: ["Next.js"],
     url: "https://aitoday-phi.vercel.app",
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "API", items: ["AI News Aggregation"] },
+      { label: "Deploy", items: ["Vercel"] },
+    ],
   },
   {
     slug: "life-timer",
@@ -162,6 +249,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: [],
     techStack: ["Next.js"],
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "Logic", items: ["Timer Calculation"] },
+    ],
   },
   {
     slug: "geulcheck",
@@ -170,6 +261,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: [],
     techStack: ["Next.js"],
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "API", items: ["Text Analysis Engine"] },
+    ],
   },
   {
     slug: "name-finder",
@@ -178,6 +273,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: [],
     techStack: ["Next.js"],
     public: true,
+    architecture: [
+      { label: "Frontend", items: ["Next.js App Router"] },
+      { label: "API", items: ["Name Search Logic"] },
+    ],
   },
   {
     slug: "documents",
@@ -187,6 +286,10 @@ export const projects: ProjectConfig[] = [
     techStack: ["Docs"],
     url: "https://d.324.ing",
     public: true,
+    architecture: [
+      { label: "Content", items: ["Markdown / MDX"] },
+      { label: "Deploy", items: ["Vercel", "d.324.ing"] },
+    ],
   },
   {
     slug: "my-game",
@@ -195,6 +298,10 @@ export const projects: ProjectConfig[] = [
     claudeProjectDirs: ["-Users-dyno-my-game"],
     techStack: ["Game"],
     public: true,
+    architecture: [
+      { label: "Engine", items: ["Game Logic"] },
+      { label: "Rendering", items: ["Canvas / WebGL"] },
+    ],
   },
 ];
 
