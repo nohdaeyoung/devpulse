@@ -110,7 +110,9 @@ export async function getTodayStats(): Promise<{
   if (!isFirebaseConfigured()) return null;
   const db = await getFirestore();
   const { collection, getDocs } = await import("firebase/firestore");
-  const today = new Date().toISOString().split("T")[0];
+  const now = new Date();
+  const kst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+  const today = kst.toISOString().split("T")[0];
   const snap = await getDocs(collection(db, "projects"));
   let commits = 0;
   let projects = 0;

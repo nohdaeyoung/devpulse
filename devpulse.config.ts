@@ -256,7 +256,7 @@ export const projects: ProjectConfig[] = [
   },
   {
     slug: "geulcheck",
-    name: "글체크",
+    name: "글책",
     path: "/Volumes/Dev/geulcheck",
     claudeProjectDirs: [],
     techStack: ["Next.js"],

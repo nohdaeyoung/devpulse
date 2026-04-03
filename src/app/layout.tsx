@@ -20,10 +20,11 @@ export const metadata: Metadata = {
 
 function TodayDate() {
   const now = new Date();
-  const month = now.getMonth() + 1;
-  const date = now.getDate();
+  const kst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+  const month = kst.getUTCMonth() + 1;
+  const date = kst.getUTCDate();
   const dayNames = ["일", "월", "화", "수", "목", "금", "토"];
-  const day = dayNames[now.getDay()];
+  const day = dayNames[kst.getUTCDay()];
   return (
     <span className="text-sm text-text-muted tabular-nums">
       {month}월 {date}일 {day}요일
