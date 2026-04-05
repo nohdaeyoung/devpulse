@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getProject, getDailyEntry } from "@/lib/data";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 export const revalidate = 3600;
 
@@ -49,50 +50,52 @@ export default async function DailyPostPage({
           </div>
         </header>
 
-        {entry.summary && (
-          <section className="mb-8">
-            <div className="max-w-none">
-              {entry.summary.split("\n\n").map((paragraph, i) => (
-                <p
-                  key={i}
-                  className="text-sm text-text-secondary leading-relaxed mb-4"
+        <AnimateOnScroll>
+          {entry.summary ? (
+            <section className="mb-8">
+              <div className="max-w-none">
+                {entry.summary.split("\n\n").map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className="text-sm text-text-secondary leading-relaxed mb-4"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </section>
+          ) : (
+            <section className="mb-8 p-4 bg-bg-surface border border-border rounded-lg text-sm text-text-muted">
+              AI 요약이 아직 생성되지 않았습니다. 파이프라인을 실행하면 자동으로 생성됩니다.
+            </section>
+          )}
+        </AnimateOnScroll>
+
+        <AnimateOnScroll>
+          <section>
+            <h2 className="text-xs font-medium text-text-muted uppercase tracking-wider mb-3">
+              커밋 기록
+            </h2>
+            <div className="divide-y divide-border rounded-lg border border-border bg-bg-surface overflow-hidden">
+              {entry.commits.map((commit) => (
+                <div
+                  key={commit.hash}
+                  className="flex items-start gap-3 text-sm px-4 py-2.5"
                 >
-                  {paragraph}
-                </p>
+                  <code className="text-xs bg-bg-elevated px-1.5 py-0.5 rounded text-text-muted font-mono flex-shrink-0 mt-0.5 hidden sm:inline">
+                    {commit.hash}
+                  </code>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-text-primary">{commit.message}</span>
+                  </div>
+                  <span className="text-xs text-text-muted flex-shrink-0 tabular-nums">
+                    {formatTime(commit.timestamp)}
+                  </span>
+                </div>
               ))}
             </div>
           </section>
-        )}
-
-        {!entry.summary && (
-          <section className="mb-8 p-4 bg-bg-secondary rounded-md text-sm text-text-muted">
-            AI 요약이 아직 생성되지 않았습니다. 파이프라인을 실행하면 자동으로 생성됩니다.
-          </section>
-        )}
-
-        <section>
-          <h2 className="text-xs font-medium text-text-muted uppercase tracking-wider mb-3">
-            커밋 기록
-          </h2>
-          <div className="divide-y divide-border">
-            {entry.commits.map((commit) => (
-              <div
-                key={commit.hash}
-                className="flex items-start gap-3 text-sm py-2"
-              >
-                <code className="text-xs bg-bg-secondary px-1.5 py-0.5 rounded text-text-muted font-mono flex-shrink-0 mt-0.5 hidden sm:inline">
-                  {commit.hash}
-                </code>
-                <div className="flex-1 min-w-0">
-                  <span className="text-text-primary">{commit.message}</span>
-                </div>
-                <span className="text-xs text-text-muted flex-shrink-0 tabular-nums">
-                  {formatTime(commit.timestamp)}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
+        </AnimateOnScroll>
       </article>
     </div>
   );

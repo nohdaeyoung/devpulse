@@ -323,6 +323,93 @@ export const projects: ProjectConfig[] = [
   },
 ];
 
+// Development Environment Spec
+export interface SpecCategory {
+  label: string;
+  items: { name: string; desc: string }[];
+}
+
+export const devSpec: SpecCategory[] = [
+  {
+    label: "AI Models",
+    items: [
+      { name: "Claude Opus 4.6", desc: "Primary coding agent (1M context)" },
+      { name: "Claude Sonnet 4.6", desc: "Fast mode, reviews, subagents" },
+      { name: "Claude Haiku 4.5", desc: "Quick lookups, exploration" },
+      { name: "OpenAI Codex", desc: "Second opinion, adversarial review" },
+    ],
+  },
+  {
+    label: "Agent Framework",
+    items: [
+      { name: "Claude Code", desc: "CLI-based AI coding agent" },
+      { name: "oh-my-claudecode", desc: "Multi-agent orchestration layer" },
+      { name: "Agent Teams", desc: "Parallel subagent coordination" },
+      { name: "Claude Agent SDK", desc: "Custom agent building" },
+    ],
+  },
+  {
+    label: "Agents (OMC)",
+    items: [
+      { name: "executor", desc: "Implementation" },
+      { name: "architect", desc: "System design" },
+      { name: "code-reviewer", desc: "Quality review (Opus)" },
+      { name: "debugger", desc: "Root cause analysis" },
+      { name: "verifier", desc: "Evidence-based verification" },
+      { name: "planner", desc: "Strategic planning" },
+      { name: "test-engineer", desc: "Test strategy" },
+      { name: "tracer", desc: "Causal tracing" },
+      { name: "security-reviewer", desc: "Vulnerability detection" },
+      { name: "designer", desc: "UI/UX design" },
+    ],
+  },
+  {
+    label: "Skills (gstack)",
+    items: [
+      { name: "/qa", desc: "Automated QA testing + fix" },
+      { name: "/ship", desc: "PR + CI + deploy pipeline" },
+      { name: "/design-review", desc: "Visual design audit" },
+      { name: "/investigate", desc: "Bug root cause analysis" },
+      { name: "/office-hours", desc: "YC-style product diagnostic" },
+      { name: "/plan-eng-review", desc: "Architecture review" },
+      { name: "/plan-ceo-review", desc: "Scope & strategy review" },
+      { name: "/autoplan", desc: "Full review pipeline" },
+      { name: "/review", desc: "Pre-landing code review" },
+      { name: "/design-consultation", desc: "Design system creation" },
+    ],
+  },
+  {
+    label: "MCP Plugins",
+    items: [
+      { name: "context7", desc: "Library docs fetcher" },
+      { name: "claude-mem", desc: "Cross-session memory" },
+      { name: "Gmail", desc: "Email integration" },
+      { name: "Google Calendar", desc: "Calendar integration" },
+      { name: "Linear", desc: "Issue tracking" },
+    ],
+  },
+  {
+    label: "Infrastructure",
+    items: [
+      { name: "Vercel", desc: "Frontend hosting + CI/CD" },
+      { name: "Firebase", desc: "Auth, Firestore, Storage" },
+      { name: "Sanity CMS", desc: "Headless content management" },
+      { name: "GitHub", desc: "Source control + Actions" },
+      { name: "macOS LaunchAgent", desc: "Scheduled pipelines" },
+    ],
+  },
+  {
+    label: "Frontend Stack",
+    items: [
+      { name: "Next.js 16", desc: "App Router + Turbopack" },
+      { name: "React 19", desc: "Server Components" },
+      { name: "Tailwind CSS v4", desc: "Utility-first CSS" },
+      { name: "Pretendard", desc: "Korean web font" },
+      { name: "Three.js", desc: "3D rendering (Lab)" },
+    ],
+  },
+];
+
 // Claude projects base directory
 export const CLAUDE_PROJECTS_BASE = `${process.env.HOME}/.claude/projects`;
 
